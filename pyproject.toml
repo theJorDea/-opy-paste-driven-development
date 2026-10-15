@@ -1,0 +1,17 @@
+[project]
+name = "mlops-helth-service"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "theJorDea", email = "klevin3701@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+readme = "README.md"
+
+[project.scripts]
+mlops-helth-service = "mlops_helth_service:main"
+
+[build-system]
+requires = ["uv_build>=0.11.32,<0.12.0"]
+build-backend = "uv_build"
