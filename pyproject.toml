@@ -1,7 +1,7 @@
 [project]
-name = "mlops-helth-service"
+name = "mlops-health-service"
 version = "0.1.0"
-description = "Add your description here"
+description = "Лабораторная работа 1: инициализация проекта"
 authors = [
     { name = "theJorDea", email = "klevin3701@gmail.com" }
 ]
@@ -9,9 +9,47 @@ requires-python = ">=3.12"
 dependencies = []
 readme = "README.md"
 
-[project.scripts]
-mlops-helth-service = "mlops_helth_service:main"
-
 [build-system]
 requires = ["uv_build>=0.11.32,<0.12.0"]
 build-backend = "uv_build"
+
+[tool.uv]
+default-groups = ["web", "dev"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pre-commit>=4.7.0",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.1",
+]
+web = [
+    "asyncpg>=0.32.0",
+    "fastapi>=0.143.3",
+    "pydantic-settings>=2.16.0",
+    "uvicorn[standard]>=0.52.4",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "RUF", # ruff-specific
+    "BLE", # flake8-blind-except: запрещает except Exception без уважительной причины
+    "ANN", # flake8-annotations
+]
+ignore = [
+    "RUF001", # кириллические строки — ложные срабатывания
+    "RUF002", # кириллические docstring — ложные срабатывания
+    "RUF003", # кириллические комментарии — ложные срабатывания
+]
